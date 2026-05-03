@@ -1,0 +1,32 @@
+name: Build Pico UF2
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive  # Important if you include SDK as submodule
+
+      - name: Build Pico Project
+        id: build
+        uses: samyarsadat/Pico-Build-Action@v1
+        with:
+          source_dir: "src"                    # Directory containing CMakeLists.txt
+          cmake_args: "-DCMAKE_BUILD_TYPE=Release"  # Or Debug
+          # output_ext: "*.uf2 *.elf"         # Default includes .uf2
+
+      - name: Upload UF2 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: ${{ steps.build.outputs.output_dir }}/**/*.uf2
+          retention-days: 30
