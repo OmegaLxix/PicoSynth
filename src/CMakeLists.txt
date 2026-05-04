@@ -4,6 +4,9 @@ set(PICO_SDK_FETCH_FROM_GIT ON)
 
 include(pico_sdk_import.cmake)
 
+target_include_directories(synth PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}
+)
 
 project(synth C CXX ASM)
 set(CMAKE_C_STANDARD 11)
