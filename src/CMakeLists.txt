@@ -11,7 +11,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 pico_sdk_init()
 
-idf_component_register(SRCS "main.c" REQUIRES "tinyusb")
 
 # Use the name "synth" directly (no ${} needed here)
 add_executable(synth
