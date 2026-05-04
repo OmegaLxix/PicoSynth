@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 set(PICO_SDK_FETCH_FROM_GIT ON)
+set(PICO_NO_PICOTOOL 1)
 
 include(pico_sdk_import.cmake)
 
