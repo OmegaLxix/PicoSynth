@@ -14,24 +14,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # Important if you include SDK as submodule
+          submodules: recursive
 
-      - name: Install Picotool Dependencies
-        run: 
+      - name: Install dependencies (including picotool)
+        run: |
           sudo apt-get update
-          sudo apt-get install -y libusb-1.0-0-dev pkg-config
+          sudo apt-get install -y build-essential cmake gcc-arm-none-eabi libnewlib-arm-none-eabi \
+                                  libstdc++-arm-none-eabi-newlib libusb-1.0-0-dev
 
       - name: Build Pico Project
         id: build
         uses: samyarsadat/Pico-Build-Action@v1
         with:
           source_dir: "src"
-          # Add the FETCH variable here so the action's internal CMake sees it!
-          cmake_args: "-DCMAKE_BUILD_TYPE=Release -DPICO_SDK_FETCH_FROM_GIT=ON"
-          
+          cmake_args: >
+            -DCMAKE_BUILD_TYPE=Release
+            -DPICO_SDK_FETCH_FROM_GIT=ON
+            -DPICO_BOARD=pico
+
       - name: Upload UF2 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
+          name: firmware-${{ github.sha }}
           path: ${{ steps.build.outputs.output_dir }}/**/*.uf2
           retention-days: 30
+          if-no-files-found: error
