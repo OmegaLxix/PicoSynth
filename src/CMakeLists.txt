@@ -9,9 +9,9 @@ project(synth C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-idf_component_register(SRCS "main.c" REQUIRES "tinyusb")
-
 pico_sdk_init()
+
+idf_component_register(SRCS "main.c" REQUIRES "tinyusb")
 
 # Use the name "synth" directly (no ${} needed here)
 add_executable(synth
