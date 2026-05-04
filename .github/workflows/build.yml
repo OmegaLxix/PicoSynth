@@ -16,6 +16,11 @@ jobs:
         with:
           submodules: recursive  # Important if you include SDK as submodule
 
+      - name: Install Picotool Dependencies
+        run: 
+          sudo apt-get update
+          sudo apt-get install -y libusb-1.0-0-dev pkg-config
+
       - name: Build Pico Project
         id: build
         uses: samyarsadat/Pico-Build-Action@v1
