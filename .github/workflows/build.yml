@@ -20,10 +20,10 @@ jobs:
         id: build
         uses: samyarsadat/Pico-Build-Action@v1
         with:
-          source_dir: "src"                    # Directory containing CMakeLists.txt
-          cmake_args: "-DCMAKE_BUILD_TYPE=Release"  # Or Debug
-          # output_ext: "*.uf2 *.elf"         # Default includes .uf2
-
+          source_dir: "src"
+          # Add the FETCH variable here so the action's internal CMake sees it!
+          cmake_args: "-DCMAKE_BUILD_TYPE=Release -DPICO_SDK_FETCH_FROM_GIT=ON"
+          
       - name: Upload UF2 artifact
         uses: actions/upload-artifact@v4
         with:
