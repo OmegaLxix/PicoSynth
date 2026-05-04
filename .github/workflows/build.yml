@@ -1,50 +1,28 @@
 name: Build Pico UF2
-
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: recursive
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            **/build/_deps
-          key: ${{ runner.os }}-pico-deps-${{ hashFiles('**/CMakeLists.txt') }}
-
-      - name: Install Toolchain
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
-
+          submodules: recursive # Important if you include SDK as submodule
       - name: Build Pico Project
         id: build
         uses: samyarsadat/Pico-Build-Action@v1
         with:
-          # If your CMakeLists.txt is in the root, use "."
-          source_dir: "." 
-          cmake_args: >
-            -DCMAKE_BUILD_TYPE=Release
-            -DPICO_BOARD=pico
-            -DPICO_SDK_FETCH_FROM_GIT=ON
-
+          source_dir: "src"
+          # Add the FETCH variable here so the action's internal CMake sees it!
+          cmake_args: "-DCMAKE_BUILD_TYPE=Release -DPICO_SDK_FETCH_FROM_GIT=ON"
+         
       - name: Upload UF2 artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pico-firmware
-          # Using the specific output from the build action
-          path: |
-            ${{ steps.build.outputs.build_dir }}/*.uf2
-          retention-days: 7
-          if-no-files-found: error
+          name: firmware
+          path: ${{ steps.build.outputs.output_dir }}/**/*.uf2
+          retention-days: 30
