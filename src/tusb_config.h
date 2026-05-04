@@ -12,6 +12,9 @@
 // Enable Audio Class
 #define CFG_TUD_AUDIO               1
 
+#define CFG_TUD_AUDIO_FUNC_1_N_AS_INT 1
+#define CFG_TUD_AUDIO_FUNC_1_CTRL_BUF_SZ 64
+
 // Audio settings
 #define CFG_TUD_AUDIO_FUNC_COUNT                            1
 #define CFG_TUD_AUDIO_FUNC_1_NUMBER_OF_CHANNELS             1
