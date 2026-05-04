@@ -9,10 +9,10 @@ project(synth C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
+pico_sdk_init()
+
 pico_enable_stdio_usb(synth 1)
 pico_enable_stdio_uart(synth 1)
-
-pico_sdk_init()
 
 # Use the name "synth" directly (no ${} needed here)
 add_executable(synth
