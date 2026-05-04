@@ -10,11 +10,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 pico_sdk_init()
 
-add_executable(${synth}
+# Use the name "synth" directly (no ${} needed here)
+add_executable(synth
     main.c
-    # add other .c/.cpp files
 )
 
-target_link_libraries(${synth} pico_stdlib)  # Add other libraries as needed
+target_link_libraries(synth pico_stdlib)
 
-pico_add_extra_outputs(${synth})  # Generates .uf2, .elf, etc.
+pico_add_extra_outputs(synth)
