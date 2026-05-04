@@ -16,10 +16,16 @@ add_executable(synth
     main.c
 )
 
+pico_enable_usb_device(synth 1)
+
 pico_enable_stdio_usb(synth 1)
 pico_enable_stdio_uart(synth 1)
 
-target_link_libraries(synth pico_stdlib)
+target_link_libraries(synth 
+    pico_stdlib
+    tinyusb_device
+    tinyusb_board
+)
 
 pico_add_extra_outputs(synth)
 
