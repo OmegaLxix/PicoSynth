@@ -1,6 +1,7 @@
 #include <math.h>
 #include "pico/stdlib.h"
 #include "tusb.h"                    // Main TinyUSB header
+#include "bsp/board.h"
 
 #define SAMPLE_RATE 48000
 #define FREQ        440.0f
