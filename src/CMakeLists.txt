@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
 add_executable(${synth}
-    src/main.c
+    main.c
     # add other .c/.cpp files
 )
 
