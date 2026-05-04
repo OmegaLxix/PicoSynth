@@ -5,10 +5,6 @@ set(PICO_NO_PICOTOOL 1)
 
 include(pico_sdk_import.cmake)
 
-target_include_directories(synth PUBLIC
-    ${CMAKE_CURRENT_LIST_DIR}
-)
-
 project(synth C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -19,6 +15,10 @@ pico_sdk_init()
 # Use the name "synth" directly (no ${} needed here)
 add_executable(synth
     main.c
+)
+
+target_include_directories(synth PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}
 )
 
 pico_enable_stdio_usb(synth 1)
