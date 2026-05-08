@@ -14,6 +14,8 @@ add_executable(synth
     usb_descriptors.c
 )
 
+target_include_directories(synth PRIVATE src)
+
 target_link_libraries(synth 
     pico_stdlib 
     tinyusb_device
