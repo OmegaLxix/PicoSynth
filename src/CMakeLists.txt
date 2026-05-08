@@ -14,7 +14,7 @@ add_executable(synth
     usb_descriptors.c
 )
 
-target_include_directories(synth PRIVATE src)
+target_include_directories(synth PRIVATE src/tusb_config.h)
 
 target_link_libraries(synth 
     pico_stdlib 
