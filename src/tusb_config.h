@@ -17,6 +17,7 @@
 #define CFG_TUD_AUDIO_FUNC_DESC_LEN        128
 #define CFG_TUD_AUDIO_FUNC_COUNT           1
 #define CFG_TUD_AUDIO_EP_SZ_IN             98
+#define USBD_AUDIO_CONTROL_REQ_MAX_DATA_SIZE         256U 
 
 // Mono 16-bit speaker
 #define CFG_TUD_AUDIO_FUNC_1_N_AS_INT                1
