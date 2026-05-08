@@ -14,7 +14,7 @@ add_executable(synth
     usb_descriptors.c
 )
 
-target_include_directories(synth PRIVATE src/tusb_config.h)
+target_include_directories(synth PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 target_link_libraries(synth 
     pico_stdlib 
