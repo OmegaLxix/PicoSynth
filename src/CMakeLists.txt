@@ -10,8 +10,8 @@ set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
 add_executable(synth
-    src/main.c
-    src/usb_descriptors.c
+    main.c
+    usb_descriptors.c
 )
 
 target_link_libraries(synth 
