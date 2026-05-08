@@ -13,8 +13,9 @@
 #define CFG_TUD_ENDPOINT0_SIZE      64
 
 // Audio Class
+#define CFG_TUD_AUDIO_FUNC_1_CTRL_BUF_SZ   64
 #define CFG_TUD_AUDIO                      1
-#define CFG_TUD_AUDIO_FUNC_DESC_LEN        128
+#define TUD_AUDIO_SPEAKER_STEREO_DESC_LEN  64
 #define CFG_TUD_AUDIO_FUNC_COUNT           1
 #define CFG_TUD_AUDIO_EP_SZ_IN             98
 #define USBD_AUDIO_CONTROL_REQ_MAX_DATA_SIZE         256U 
