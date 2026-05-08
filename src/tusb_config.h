@@ -14,8 +14,9 @@
 
 // Audio Class
 #define CFG_TUD_AUDIO                      1
-#define CFG_TUD_AUDIO_FUNC_DESC_LEN_MAX    128
+#define CFG_TUD_AUDIO_FUNC_DESC_LEN        128
 #define CFG_TUD_AUDIO_FUNC_COUNT           1
+#define CFG_TUD_AUDIO_EP_SZ_IN             98
 
 // Mono 16-bit speaker
 #define CFG_TUD_AUDIO_FUNC_1_N_AS_INT                1
