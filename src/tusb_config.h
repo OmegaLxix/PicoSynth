@@ -3,23 +3,23 @@
 
 #define CFG_TUSB_RHPORT0_MODE       (OPT_MODE_DEVICE)
 #define CFG_TUSB_OS                 OPT_OS_NONE
+#define CFG_TUSB_MCU                OPT_MCU_RP2040
 
-#define CFG_TUSB_MCU    OPT_MCU_RP2040
-#define CFG_TUD_ENABLED 1
-
+#define CFG_TUD_ENABLED             1
 #define CFG_TUD_ENDPOINT0_SIZE      64
 
-// Enable Audio Class
+// Audio Class
 #define CFG_TUD_AUDIO               1
 
-#define CFG_TUD_AUDIO_FUNC_1_N_AS_INT 1
-#define CFG_TUD_AUDIO_FUNC_1_CTRL_BUF_SZ 64
+#define CFG_TUD_AUDIO_FUNC_COUNT    1
 
-// Audio settings
-#define CFG_TUD_AUDIO_FUNC_COUNT                            1
-#define CFG_TUD_AUDIO_FUNC_1_NUMBER_OF_CHANNELS             1
-#define CFG_TUD_AUDIO_FUNC_1_N_BYTES_PER_SAMPLE             2   // 16-bit
-#define CFG_TUD_AUDIO_FUNC_1_N_CHANNELS_TX                  1
-#define CFG_TUD_AUDIO_FUNC_1_MAX_SAMPLE_RATE                48000
+// Mono 16-bit speaker
+#define CFG_TUD_AUDIO_FUNC_1_NUMBER_OF_CHANNELS      1
+#define CFG_TUD_AUDIO_FUNC_1_N_BYTES_PER_SAMPLE      2
+#define CFG_TUD_AUDIO_FUNC_1_N_CHANNELS_TX           1
+#define CFG_TUD_AUDIO_FUNC_1_MAX_SAMPLE_RATE         48000
+
+// <<< THIS IS THE MISSING PIECE >>>
+#define CFG_TUD_AUDIO_FUNC_1_DESC_LEN   (TUD_AUDIO_SPEAKER_MONO_DESC_LEN)
 
 #endif
