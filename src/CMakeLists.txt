@@ -14,7 +14,9 @@ add_executable(synth
     usb_descriptors.c
 )
 
-target_include_directories(synth PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_include_directories(synth PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}
+)
 
 target_link_libraries(synth 
     pico_stdlib 
